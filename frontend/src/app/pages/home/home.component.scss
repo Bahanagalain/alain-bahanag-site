@@ -1,0 +1,7 @@
+.hero {
+  background: linear-gradient(to bottom right, #eff6ff 0%, #ffffff 100%);  // Gradient soft bleu
+}
+
+.btn-primary {
+  @extend .btn-primary;  // Hérite du global (ajoute si besoin)
+}
