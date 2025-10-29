@@ -1,0 +1,58 @@
+/* You can add global styles to this file, and also import other style files */
+// Charte Alain BAHANAG : Minimaliste, Bleu/Orange, Responsive
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500&display=swap');
+
+:root {
+  --primary-blue: #1E3A8A;  // Bleu pro pour titres/confiance
+  --accent-orange: #F59E0B; // Orange énergie pour CTAs
+  --neutral-white: #FFFFFF; // Fond clean
+  --neutral-gray: #F3F4F6;  // Sections soft
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;  // Box model standard
+}
+
+body {
+  font-family: 'Inter', sans-serif;  // Texte lisible, moderne
+  background-color: var(--neutral-white);
+  color: var(--primary-blue);
+  line-height: 1.6;  // Espacement naturel
+}
+
+h1, h2, h3 {
+  font-family: 'Poppins', sans-serif;  // Titres bold/impact
+  color: var(--primary-blue);
+}
+
+.container {
+  max-width: 1200px;  // Limite largeur desktop
+  margin: 0 auto;
+  padding: 0 1rem;    // Marges latérales responsive
+}
+
+.btn-primary {
+  background: var(--accent-orange);
+  color: var(--neutral-white);
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;  // Coins arrondis soft
+  cursor: pointer;
+  font-weight: 500;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.3s ease;  // Animation hover fluide
+}
+
+.btn-primary:hover {
+  background: #d97706;  // Orange plus sombre au survol
+}
+
+// Media query mobile-first (test <768px)
+@media (max-width: 768px) {
+  h1 { font-size: 2rem; }  // Titres adaptatifs
+  .container { padding: 0 0.5rem; }
+  .text-xl { font-size: 1.1rem; }
+}
