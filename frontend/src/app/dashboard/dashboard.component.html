@@ -1,0 +1,73 @@
+<div class="min-h-screen bg-gray-50 py-8">
+  <div class="container mx-auto px-4 max-w-6xl">
+    <!-- Titre Dashboard -->
+    <div class="text-center mb-8">
+      <h1 class="text-3xl font-bold text-primary-blue mb-2">Bienvenue dans votre Dashboard</h1>
+      <p class="text-gray-600">Suivez vos formations et projets en un clin d'œil.</p>
+    </div>
+
+    <!-- Section Mes Formations : Grille responsive (1-col mobile, 3-col desktop) -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold text-primary-blue mb-6 flex items-center">
+        <span class="mr-2">📚</span> Mes Formations
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div *ngFor="let formation of mesFormations" class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border-l-4 border-accent-orange">
+          <h3 class="text-xl font-bold text-primary-blue mb-2">{{ formation.titre }}</h3>
+          <p class="text-gray-600 mb-4">{{ formation.description }}</p>
+          <div class="mb-4">
+            <span class="inline-block bg-gray-200 px-2 py-1 rounded text-sm">{{ formation.statut }}</span>
+          </div>
+          <div class="w-full bg-gray-200 rounded-full h-2 mb-4">
+            <div class="bg-accent-orange h-2 rounded-full" [style.width.%]="formation.progression"></div>
+          </div>
+          <button class="w-full bg-accent-orange text-white py-2 px-4 rounded-md hover:bg-orange-600 transition text-sm font-medium">
+            {{ formation.cta }}
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section Mes Services : Table responsive (scrollable mobile) -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-semibold text-primary-blue mb-6 flex items-center">
+        <span class="mr-2">⚙️</span> Mes Services
+      </h2>
+      <div class="overflow-x-auto">
+        <table class="w-full bg-white rounded-lg shadow-md">
+          <thead class="bg-gray-50">
+            <tr>
+              <th class="px-4 py-3 text-left text-sm font-semibold text-gray-700">Projet</th>
+              <th class="px-4 py-3 text-left text-sm font-semibold text-gray-700 hidden md:table-cell">Statut</th>
+              <th class="px-4 py-3 text-left text-sm font-semibold text-gray-700 hidden lg:table-cell">Deadline</th>
+              <th class="px-4 py-3 text-left text-sm font-semibold text-gray-700 hidden lg:table-cell">Prix</th>
+              <th class="px-4 py-3 text-left text-sm font-semibold text-gray-700">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let service of mesServices" class="border-t hover:bg-gray-50">
+              <td class="px-4 py-3 text-sm font-medium text-primary-blue">{{ service.projet }}</td>
+              <td class="px-4 py-3 text-sm text-gray-600 hidden md:table-cell">
+                <span [class]="(service.statut === 'Terminé' ? 'bg-green-100 text-green-800' : service.statut === 'En cours' ? 'bg-yellow-100 text-yellow-800' : 'bg-gray-100 text-gray-800') + ' px-2 py-1 rounded-full'">
+                  {{ service.statut }}
+                </span>
+              </td>
+              <td class="px-4 py-3 text-sm text-gray-600 hidden lg:table-cell">{{ service.deadline }}</td>
+              <td class="px-4 py-3 text-sm text-gray-600 hidden lg:table-cell">{{ service.prix }}</td>
+              <td class="px-4 py-3 text-sm">
+                <button class="text-accent-orange hover:underline text-sm">{{ service.actions }}</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Bouton Logout -->
+    <div class="text-center">
+      <button (click)="onLogout()" class="bg-red-500 hover:bg-red-600 text-white py-2 px-6 rounded-md font-semibold transition">
+        Se déconnecter
+      </button>
+    </div>
+  </div>
+</div>
